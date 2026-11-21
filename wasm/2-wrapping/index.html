@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Function Wrapping</title>
+		<script src="./index.js" defer></script>
+	</head>
+	<body>
+		<p>Using Wasm</p>
+		<input type="number" name="num1" id="num1" value="1" />
+		<input type="number" name="num2" id="num2" value="2" />
+		<button onclick="run_wasm()">lick Me!</button>
+		<script>
+			let num1 = document.getElementById("num1");
+			let num2 = document.getElementById("num2");
+			function run_wasm() {
+				console.log("Function ran.");
+				Module.ccall("main", "number", null, null);
+				let result = Module.ccall(
+					"_Z4addNumsii",
+					"number",
+					["number", "number"],
+					[Number(num1.value), Number(num2.value)],
+				);
+				console.log(result);
+			}
+		</script>
+	</body>
+</html>
