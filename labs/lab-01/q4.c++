@@ -1,10 +1,12 @@
 #include <iostream>
 using namespace std;
 
-int binSearch(int arr[], int n, int t) {
-    int l = 0, r = n-1;
-    while(l <= r) {
-        int m = l + (r-l)/2;
+int binSearch(int arr[], int n, int t)
+{
+    int l = 0, r = n - 1;
+    while (l <= r)
+    {
+        int m = l + (r - l) / 2;
         if (arr[m] == t)
             return m;
         else if (t < arr[m])
@@ -15,7 +17,8 @@ int binSearch(int arr[], int n, int t) {
     return -1;
 }
 
-int main() {
+int main()
+{
     int n, t;
     cout << "LEN: ";
     cin >> n;

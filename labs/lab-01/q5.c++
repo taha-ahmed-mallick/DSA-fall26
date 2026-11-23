@@ -1,12 +1,14 @@
 #include <iostream>
 using namespace std;
 
-bool binSearch(int **arr, int m, int n, int t) {
-    int l = 0, r = m*n-1;
-    while (l <= r) {
-        int mid = l + (r-l)/2;
-        int row = mid /n;
-        int col = mid %n;
+bool binSearch(int **arr, int m, int n, int t)
+{
+    int l = 0, r = m * n - 1;
+    while (l <= r)
+    {
+        int mid = l + (r - l) / 2;
+        int row = mid / n;
+        int col = mid % n;
         if (t == arr[row][col])
             return true;
         else if (t < arr[row][col])
@@ -24,9 +26,10 @@ int main()
     cin >> m;
     cout << "COL: ";
     cin >> n;
-    int** arr = new int*[m];
+    int **arr = new int *[m];
     cout << "Enter elements\n";
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++)
+    {
         arr[i] = new int[n];
         for (int j = 0; j < n; j++)
             cin >> arr[i][j];
@@ -39,7 +42,8 @@ int main()
         cout << endl;
     }
     int t;
-    cout << endl << "Target: ";
+    cout << endl
+         << "Target: ";
     cin >> t;
     binSearch(arr, m, n, t) ? (cout << "found the element.") : (cout << "couldn\'t find the Specified element.");
     cout << endl;

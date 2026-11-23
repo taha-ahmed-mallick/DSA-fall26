@@ -24,8 +24,9 @@ int main()
     int arr2[m + n];
     for (int i = 0; i < n; i++)
         for (int j = 0; j < m; j++)
-            arr2[i*m +j] = arr[j][i];
+            arr2[i * m + j] = arr[j][i];
     for (int i = 0; i < (m + n + 1); i++)
         cout << arr2[i] << " ";
+    cout << endl;
     return 0;
 }

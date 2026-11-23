@@ -1,21 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class MedianFinder {
+class MedianFinder
+{
 public:
     vector<int> list;
-    MedianFinder() {
-
+    MedianFinder()
+    {
     }
-    
-    void addNum(int num) {
+
+    void addNum(int num)
+    {
         list.push_back(num);
     }
-    
-    double findMedian() {
+
+    double findMedian()
+    {
         sort(list.begin(), list.end());
         int n = list.size();
-        double med = double(list[(n-1)/2]+list[n/2])/2;
+        double med = double(list[(n - 1) / 2] + list[n / 2]) / 2;
         return med;
     }
 };
@@ -27,7 +30,8 @@ public:
  * double param_2 = obj->findMedian();
  */
 
-int main() {
+int main()
+{
     MedianFinder *medfinder = new MedianFinder();
     medfinder->addNum(2);
     medfinder->addNum(1);
