@@ -18,12 +18,9 @@ int findLHS(vector<int> &nums)
 void print(const vector<int> &vec)
 {
     cout << "[";
-    int i = 0;
-    for (; i < vec.size() - 1; i++)
+    for (int i = 0; i < vec.size(); i++)
         cout << vec[i] << ", ";
-    if (i < vec.size())
-        cout << vec[i];
-    cout << "]\n";
+    cout << "\b\b]\n";
 }
 
 int main(int argc, char *argv[])
