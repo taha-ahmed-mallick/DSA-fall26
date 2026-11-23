@@ -1,18 +1,20 @@
 #include <iostream>
 using namespace std;
-class TreeNode
+
+struct TreeNode
 {
 public:
     int val;
     TreeNode *left;
     TreeNode *right;
-    TreeNode(int value) : val(value), left(NULL), right(NULL) {}
+    TreeNode(int value) : val(value), left(nullptr), right(nullptr) {}
 };
+
 class BinarySearchTree
 {
 public:
     TreeNode *root;
-    BinarySearchTree() : root(NULL) {}
+    BinarySearchTree() : root(nullptr) {}
     void insert(int key)
     {
         root = insertRec(root, key);
@@ -33,7 +35,7 @@ private:
     TreeNode *insertRec(TreeNode *node, int key)
     {
         // Base case: if the tree is empty, create a new node
-        if (node == NULL)
+        if (node == nullptr)
             return new TreeNode(key);
         // Otherwise, recur down the tree
         if (key < node->val)
@@ -46,7 +48,7 @@ private:
     TreeNode *deleteRec(TreeNode *node, int key)
     {
         // Base case: if the tree is empty
-        if (node == NULL)
+        if (node == nullptr)
             return node;
         // Recur down the tree
         if (key < node->val)
@@ -56,13 +58,13 @@ private:
         else
         {
             // Node with only one child or no child
-            if (node->left == NULL)
+            if (node->left == nullptr)
             {
                 TreeNode *temp = node->right;
                 delete node;
                 return temp;
             }
-            else if (node->right == NULL)
+            else if (node->right == nullptr)
             {
                 TreeNode *temp = node->left;
                 delete node;
@@ -80,20 +82,18 @@ private:
     // Find the node with the minimum value (used for deleting nodes)
     TreeNode *minValueNode(TreeNode *node)
     {
-        TreeNode *current = node;
-        while (current && current->left != NULL)
-            current = current->left;
-        return current;
+        while (node && node->left != nullptr)
+            node = node->left;
+        return node;
     }
     // Inorder traversal function
-    void inorderRec(TreeNode *root)
+    void inorderRec(TreeNode *node)
     {
-        if (root != NULL)
-        {
-            inorderRec(root->left);
-            cout << root->val << ", ";
-            inorderRec(root->right);
-        }
+        if (node == nullptr)
+            return;
+        inorderRec(node->left);
+        cout << node->val << ", ";
+        inorderRec(node->right);
     }
 };
 int main()
