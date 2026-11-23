@@ -20,7 +20,7 @@ void merge(vector<int> &arr, int left, int mid, int right)
 
     int i = 0, j = 0, k = left;
     while (i < n1 && j < n2)
-        if (l[i] < r[j])
+        if (l[i] <= r[j]) // added equal comp for stability
             arr[k++] = l[i++];
         else
             arr[k++] = r[j++];
@@ -34,12 +34,13 @@ void mergeSort(vector<int> &arr)
 {
     int n = arr.size();
     for (int width = 1; width < n; width *= 2)
-        for (int left = 0; left < n; left += width * 2)
+        for (int left = 0; left < n;)
         {
             int mid = min(left + width - 1, n - 1);
             int right = min(left + width * 2 - 1, n - 1);
             if (mid < right)
                 merge(arr, left, mid, right);
+            left = right + 1;
         }
 }
 
