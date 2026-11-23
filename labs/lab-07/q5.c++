@@ -29,11 +29,9 @@ void runTest(vector<vector<int>> &trips, int cap)
 {
     cout << "Capacity: " << cap << endl
          << "[";
-    int i = 0;
-    for (; i < trips.size() - 1; i++)
+    for (int i = 0; i < trips.size(); i++)
         cout << "[" << trips[i][0] << ", " << trips[i][1] << ", " << trips[i][2] << "], ";
-    cout << "[" << trips[i][0] << ", " << trips[i][1] << ", " << trips[i][2] << "]";
-    cout << "]\n";
+    cout << "\b\b]\n";
     cout << "Result: " << (carPooling(trips, cap) ? "true" : "false") << endl
          << endl;
 }
