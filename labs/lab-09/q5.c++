@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <climits>
 using namespace std;
 
 struct Node
@@ -25,12 +26,12 @@ public:
         if (root == nullptr || (root->left == nullptr && root->right == nullptr))
             return 0;
 
-        int minDiff = __INT_MAX__;
+        int minDiff = INT_MAX;
         bool hasPrev = false;
         int prevVal = 0;
 
         minDiffInorder(root, prevVal, hasPrev, minDiff);
-        return (minDiff == __INT_MAX__) ? 0 : minDiff;
+        return (minDiff == INT_MAX) ? 0 : minDiff;
     }
 
 private:

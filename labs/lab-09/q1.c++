@@ -11,7 +11,7 @@ public:
     Node(int val)
     {
         data = val;
-        left = right = NULL;
+        left = right = nullptr;
     }
 };
 
@@ -20,10 +20,7 @@ class BinarySearchTree
     Node *root;
 
 public:
-    BinarySearchTree()
-    {
-        root = NULL;
-    }
+    BinarySearchTree() : root(nullptr) {}
     void insert(int key)
     {
         root = insertRec(root, key);
@@ -42,7 +39,7 @@ public:
 
     void preorder()
     {
-        if (root == NULL)
+        if (root == nullptr)
             return;
 
         stack<Node *> s;
@@ -55,23 +52,18 @@ public:
 
             cout << current->data << " ";
 
-            if (current->right != NULL)
-            {
+            if (current->right != nullptr)
                 s.push(current->right);
-            }
 
-            if (current->left != NULL)
-            {
+            if (current->left != nullptr)
                 s.push(current->left);
-            }
         }
-
         cout << endl;
     }
 
     void postorder()
     {
-        if (root == NULL)
+        if (root == nullptr)
             return;
 
         stack<Node *> s1, s2;
@@ -85,15 +77,11 @@ public:
 
             s2.push(current);
 
-            if (current->left != NULL)
-            {
+            if (current->left != nullptr)
                 s1.push(current->left);
-            }
 
-            if (current->right != NULL)
-            {
+            if (current->right != nullptr)
                 s1.push(current->right);
-            }
         }
 
         while (!s2.empty())
@@ -108,26 +96,20 @@ public:
 private:
     Node *insertRec(Node *node, int key)
     {
-        if (node == NULL)
-        {
+        if (node == nullptr)
             return new Node(key);
-        }
 
         if (key < node->data)
-        {
             node->left = insertRec(node->left, key);
-        }
         else if (key > node->data)
-        {
             node->right = insertRec(node->right, key);
-        }
 
         return node;
     }
 
     void inorderRec(Node *root)
     {
-        if (root == NULL)
+        if (root == nullptr)
             return;
 
         inorderRec(root->left);
@@ -137,42 +119,31 @@ private:
 
     Node *minValueNode(Node *node)
     {
-        Node *current = node;
-
-        while (current && current->left != NULL)
-        {
-            current = current->left;
-        }
-
-        return current;
+        while (node && node->left != nullptr)
+            node = node->left;
+        return node;
     }
 
     Node *deleteRec(Node *node, int key)
     {
-        if (node == NULL)
-        {
+        if (node == nullptr)
             return node;
-        }
 
         if (key < node->data)
-        {
             node->left = deleteRec(node->left, key);
-        }
         else if (key > node->data)
-        {
             node->right = deleteRec(node->right, key);
-        }
         else
         {
 
-            if (node->left == NULL)
+            if (node->left == nullptr)
             {
                 Node *temp = node->right;
                 delete node;
                 return temp;
             }
 
-            else if (node->right == NULL)
+            if (node->right == nullptr)
             {
                 Node *temp = node->left;
                 delete node;
@@ -180,12 +151,9 @@ private:
             }
 
             Node *temp = minValueNode(node->right);
-
             node->data = temp->data;
-
             node->right = deleteRec(node->right, temp->data);
         }
-
         return node;
     }
 };

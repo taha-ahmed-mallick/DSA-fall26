@@ -20,18 +20,18 @@ public:
     ~BinaryTree() { freeTree(root); }
     void isBalanced()
     {
-        maxFactor = 0;
-        cout << "Height: " << checkHeight(root) << endl;
+        int maxFactor = 0;
+        cout << "Height: " << checkHeight(root, maxFactor) << endl;
         cout << "Balanced: " << (maxFactor > 1 ? "false" : "true") << endl;
     }
 
 private:
-    int checkHeight(Node *node)
+    int checkHeight(Node *node, int& maxFactor)
     {
         if (!node)
             return 0;
-        int lh = checkHeight(node->left);
-        int rh = checkHeight(node->right);
+        int lh = checkHeight(node->left, maxFactor);
+        int rh = checkHeight(node->right, maxFactor);
         int factor;
         if (lh < rh)
             factor = rh - lh;
