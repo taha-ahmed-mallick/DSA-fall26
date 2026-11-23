@@ -45,7 +45,7 @@ void mergeSort(int arr[], int left, int right)
 
 int main(int argc, char *argv[])
 {
-    int arr[] = {12, 11, 13, 5, 6, 7};
+    int arr[] = {40, 2, 10, 4, 1, 19, 7};
     int size = sizeof(arr) / sizeof(arr[0]);
     cout << "Given Array: ";
     printArr(arr, size);
