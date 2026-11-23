@@ -1,5 +1,4 @@
 #include <iostream>
-#include <climits>
 using namespace std;
 
 struct Node
@@ -21,7 +20,7 @@ public:
     ~BinaryTree() { freeTree(root); }
     void isBalanced()
     {
-        int maxFactor = INT_MIN;
+        int maxFactor = 0;
         cout << "Height: " << checkHeight(root, maxFactor) << endl;
         cout << "Balanced: " << (maxFactor > 1 ? "false" : "true") << endl;
     }
