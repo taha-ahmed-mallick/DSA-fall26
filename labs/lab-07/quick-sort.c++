@@ -22,6 +22,7 @@ int partition(int arr[], int start, int end) {
 void quickSort(int arr[], int start, int end) {
     if (start < end) {
         int pivot = partition(arr, start, end);
+        printArr(arr, 6); // to view the process
         quickSort(arr, start, pivot - 1);
         quickSort(arr, pivot + 1, end);
     }
